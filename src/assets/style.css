@@ -2041,6 +2041,8 @@ textarea:focus {
 	direction: rtl;
 	align-items: center;
 	display: flex;
+  min-height: 475px;
+  max-height: 475px;
 }
 .slider-content {
 	text-align: right;
