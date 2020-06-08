@@ -6,9 +6,9 @@
       <div class="row">
         <!-- Begin Header Top Left Area -->
         <div class="col-lg-3 col-md-4">
-          <div class="header-top-left">
+          <div class="header-top-left" *ngIf="user != null">
             <ul class="phone-wrap">
-              <li><span>تلفن پرس و جو:</span><a href="callto://+123123321345">(+123) 123 321 345</a></li>
+              <li>{{user.firstName}} {{user.lastName}} خوش آمدید.</li>
             </ul>
           </div>
         </div>
@@ -22,13 +22,15 @@
                 <div class="ht-setting-trigger"><span>حساب کاربری</span></div>
                 <div class="setting ht-setting">
                   <ul class="ht-setting-list">
-                    <li><a href="login-register.html">حساب من</a></li>
-                    <li><a href="checkout.html">پرداخت</a></li>
-                    <li><a routerLink="/login">ورود</a></li>
-                    <li><a routerLink="/register">ثبت نام</a></li>
+                    <li *ngIf="user != null"><a href="login-register.html">حساب من</a></li>
+                    <li *ngIf="user != null"><a href="checkout.html">پرداخت</a></li>
+                    <li *ngIf="user != null"><a>خروج</a></li>
+                    <li *ngIf="user == null"><a routerLink="/login">ورود</a></li>
+                    <li *ngIf="user == null"><a routerLink="/register">ثبت نام</a></li>
                   </ul>
                 </div>
               </li>
+
               <!-- Setting Area End Here -->
 
             </ul>
@@ -59,70 +61,70 @@
             <select class="nice-select select-search-category">
               <option value="0">همه</option>
               <option value="10">لپ تاپ ها</option>
-              <option value="17">- -  ویدیو اصلی</option>
-              <option value="20">- - - -  همه ویدیوها</option>
-              <option value="21">- - - -  بلوز</option>
-              <option value="22">- - - -  لباس شب</option>
-              <option value="23">- - - -  لباس تابستانی</option>
-              <option value="24">- - - -  تی شرت</option>
-              <option value="25">- - - -  اجاره یا خرید</option>
-              <option value="26">- - - -  فهرست پیگیری شما</option>
-              <option value="27">- - - -  تماشای هر جایی</option>
-              <option value="28">- - - -  شروع شدن</option>
-              <option value="18">- - - -  کامپیوتر</option>
-              <option value="29">- - - -  بیشتر برای کاوش</option>
-              <option value="30">- - - -  تلویزیون و ویدئو</option>
-              <option value="31">- - - -  صوتی و تئاتر</option>
-              <option value="32">- - - -  دوربین، عکس </option>
-              <option value="33">- - - -  تلفن های همراه</option>
-              <option value="34">- - - -  هذفون</option>
-              <option value="35">- - - -  بازی ویدئویی</option>
-              <option value="36">- - - -  بلندگوهای بی سیم</option>
-              <option value="19">- - - -  الکترونیک</option>
-              <option value="37">- - - -  صفحه اصلی آمازون</option>
-              <option value="38">- - - -  آشپزخانه و ناهارخوری</option>
-              <option value="39">- - - -  اسباب خانه</option>
-              <option value="40">- - - -  تختخواب و حمام</option>
-              <option value="41">- - - -  لوازم خانگی</option>
+              <option value="17">- - ویدیو اصلی</option>
+              <option value="20">- - - - همه ویدیوها</option>
+              <option value="21">- - - - بلوز</option>
+              <option value="22">- - - - لباس شب</option>
+              <option value="23">- - - - لباس تابستانی</option>
+              <option value="24">- - - - تی شرت</option>
+              <option value="25">- - - - اجاره یا خرید</option>
+              <option value="26">- - - - فهرست پیگیری شما</option>
+              <option value="27">- - - - تماشای هر جایی</option>
+              <option value="28">- - - - شروع شدن</option>
+              <option value="18">- - - - کامپیوتر</option>
+              <option value="29">- - - - بیشتر برای کاوش</option>
+              <option value="30">- - - - تلویزیون و ویدئو</option>
+              <option value="31">- - - - صوتی و تئاتر</option>
+              <option value="32">- - - - دوربین، عکس</option>
+              <option value="33">- - - - تلفن های همراه</option>
+              <option value="34">- - - - هذفون</option>
+              <option value="35">- - - - بازی ویدئویی</option>
+              <option value="36">- - - - بلندگوهای بی سیم</option>
+              <option value="19">- - - - الکترونیک</option>
+              <option value="37">- - - - صفحه اصلی آمازون</option>
+              <option value="38">- - - - آشپزخانه و ناهارخوری</option>
+              <option value="39">- - - - اسباب خانه</option>
+              <option value="40">- - - - تختخواب و حمام</option>
+              <option value="41">- - - - لوازم خانگی</option>
               <option value="11">تلویزیون و صوتی</option>
-              <option value="42">- -  چام چام</option>
-              <option value="45">- - - -  اداری</option>
-              <option value="47">- - - -  گیمینگ</option>
-              <option value="48">- - - -  کروم بوک</option>
-              <option value="49">- - - -  مرمت شده</option>
-              <option value="50">- - - -  صفحه لمسی</option>
-              <option value="51">- - - -  اولترابوک ها</option>
-              <option value="52">- - - -  بلوز</option>
-              <option value="43">- -  سنایی</option>
-              <option value="53">- - - -  هارد درایو</option>
-              <option value="54">- - - -  کارت گرافیک</option>
-              <option value="55">- - - -  پردازنده ها (CPU)</option>
-              <option value="56">- - - -  حافظه</option>
-              <option value="57">- - - -  مادربورد</option>
-              <option value="58">- - - -  فن و خنک کننده</option>
-              <option value="59">- - - -  دیسک های سی دی / دی وی دی</option>
-              <option value="44">- -  میتو</option>
-              <option value="60">- - - -  کارت های صوتی</option>
-              <option value="61">- - - -  کیس ها و پنل ها</option>
-              <option value="62">- - - -  لباس های تصادفی</option>
-              <option value="63">- - - -  لباس شب</option>
-              <option value="64">- - - -  تی شرت</option>
-              <option value="65">- - - -  تاپ</option>
+              <option value="42">- - چام چام</option>
+              <option value="45">- - - - اداری</option>
+              <option value="47">- - - - گیمینگ</option>
+              <option value="48">- - - - کروم بوک</option>
+              <option value="49">- - - - مرمت شده</option>
+              <option value="50">- - - - صفحه لمسی</option>
+              <option value="51">- - - - اولترابوک ها</option>
+              <option value="52">- - - - بلوز</option>
+              <option value="43">- - سنایی</option>
+              <option value="53">- - - - هارد درایو</option>
+              <option value="54">- - - - کارت گرافیک</option>
+              <option value="55">- - - - پردازنده ها (CPU)</option>
+              <option value="56">- - - - حافظه</option>
+              <option value="57">- - - - مادربورد</option>
+              <option value="58">- - - - فن و خنک کننده</option>
+              <option value="59">- - - - دیسک های سی دی / دی وی دی</option>
+              <option value="44">- - میتو</option>
+              <option value="60">- - - - کارت های صوتی</option>
+              <option value="61">- - - - کیس ها و پنل ها</option>
+              <option value="62">- - - - لباس های تصادفی</option>
+              <option value="63">- - - - لباس شب</option>
+              <option value="64">- - - - تی شرت</option>
+              <option value="65">- - - - تاپ</option>
               <option value="12">گوشی های هوشمند</option>
-              <option value="66">- -  لوازم جانبی دوربین</option>
-              <option value="68">- - - -  هشت هسته ای</option>
-              <option value="69">- - - -  چهار هسته ای</option>
-              <option value="70">- - - -  دو هسته ای</option>
-              <option value="71">- - - -  صفحه نمایش 7.0</option>
-              <option value="72">- - - -  صفحه نمایش 9.0</option>
-              <option value="73">- - - -  کیف و کیس</option>
-              <option value="67">- -  ایستگاه راه آهن</option>
-              <option value="74">- - - -  باتری ها</option>
-              <option value="75">- - - -  میکروفون ها</option>
-              <option value="76">- - - -  تثبیت کننده ها</option>
-              <option value="77">- - - -  نوارهای ویدئویی</option>
-              <option value="78">- - - -  کارت خوان حافظه</option>
-              <option value="79">- - - -  سه پایه</option>
+              <option value="66">- - لوازم جانبی دوربین</option>
+              <option value="68">- - - - هشت هسته ای</option>
+              <option value="69">- - - - چهار هسته ای</option>
+              <option value="70">- - - - دو هسته ای</option>
+              <option value="71">- - - - صفحه نمایش 7.0</option>
+              <option value="72">- - - - صفحه نمایش 9.0</option>
+              <option value="73">- - - - کیف و کیس</option>
+              <option value="67">- - ایستگاه راه آهن</option>
+              <option value="74">- - - - باتری ها</option>
+              <option value="75">- - - - میکروفون ها</option>
+              <option value="76">- - - - تثبیت کننده ها</option>
+              <option value="77">- - - - نوارهای ویدئویی</option>
+              <option value="78">- - - - کارت خوان حافظه</option>
+              <option value="79">- - - - سه پایه</option>
               <option value="13">دوربین ها</option>
               <option value="14">هدفون</option>
               <option value="15">ساعت هوشمند</option>
@@ -210,7 +212,7 @@
             <nav>
               <ul>
                 <li>
-                  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">خانه</a>
+                  <a  routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">خانه</a>
                 </li>
 
 
@@ -232,9 +234,9 @@
                         <li><a href="single-product-carousel.html">محصول تکی با اسلایدر</a></li>
                         <li><a href="single-product-gallery-left.html">محصول تکی با گالری چپ</a></li>
                         <li><a href="single-product-gallery-right.html">محصول تکی با گالری راست</a></li>
-                        <li><a href="single-product-tab-style-top.html">محصول تکی با استایل برگه  بالا</a></li>
-                        <li><a href="single-product-tab-style-left.html">محصول تکی با استایل برگه  چپ</a></li>
-                        <li><a href="single-product-tab-style-right.html">محصول تکی با استایل برگه  راست</a></li>
+                        <li><a href="single-product-tab-style-top.html">محصول تکی با استایل برگه بالا</a></li>
+                        <li><a href="single-product-tab-style-left.html">محصول تکی با استایل برگه چپ</a></li>
+                        <li><a href="single-product-tab-style-right.html">محصول تکی با استایل برگه راست</a></li>
                       </ul>
                     </li>
                     <li><a href="single-product.html">محصولات تکی</a>
@@ -325,15 +327,9 @@
                 <li><a routerLink="/about-us" routerLinkActive="active">درباره ما</a></li>
                 <li><a routerLink="/contact-us" routerLinkActive="active">تماس با ما</a></li>
                 <!-- Begin Header Bottom Menu Information Area -->
-<!--                <li class="hb-info f-right p-0 d-sm-none d-lg-block">-->
-<!--                  <span>  شاهزاده, لندن, لندن بزرگ غرب 23, انگلیس</span>-->
-<!--                </li>-->
-                <li class="hb-info f-right p-0 d-sm-none d-lg-block">
-                  <a routerLink="/register" routerLinkActive="active">ثبت نام</a>
-                </li>
-                <li class="hb-info f-right p-0 d-sm-none d-lg-block pl-10">
-                  <a routerLink="/login" routerLinkActive="active">ورود</a>
-                </li>
+                <!--                <li class="hb-info f-right p-0 d-sm-none d-lg-block">-->
+                <!--                  <span>  شاهزاده, لندن, لندن بزرگ غرب 23, انگلیس</span>-->
+                <!--                </li>-->
                 <!-- Header Bottom Menu Information Area End Here -->
               </ul>
             </nav>

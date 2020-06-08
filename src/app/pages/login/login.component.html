@@ -15,20 +15,43 @@
 <div class="page-section mb-60">
   <div class="container">
     <div class="row">
-      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30">
+      <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb-30 mt-40">
         <!-- Login Form s-->
-        <form action="#" >
+        <form [formGroup]="loginForm" (ngSubmit)="submitLoginForm()">
           <div class="login-form">
             <h4 class="login-title">ورود</h4>
             <div class="row">
-              <div class="col-md-12 col-12 mb-20">
-                <label>آدرس ایمیل*</label>
-                <input class="mb-0" type="email" placeholder="آدرس ایمیل">
+
+              <div class="col-md-12 mb-20">
+                <label>ایمیل</label>
+                <input class="mb-0" type="email" formControlName="email">
+                <p class="text-danger"
+                   *ngIf="loginForm.controls.email.errors?.required && loginForm.controls.email.touched">
+                  لطفا ایمیل خود را وارد نمایید
+                </p>
+                <p class="text-danger"
+                   *ngIf="loginForm.controls.email.errors?.maxlength && loginForm.controls.email.touched">
+                  تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+                </p>
+                <p class="text-danger"
+                   *ngIf="loginForm.controls.email.errors?.email && loginForm.controls.email.touched">
+                  ایمیل وارد شده معتبر نمیباشد
+                </p>
               </div>
-              <div class="col-12 mb-20">
+
+              <div class="col-md-12 mb-20">
                 <label>رمزعبور</label>
-                <input class="mb-0" type="password" placeholder="رمزعبور">
+                <input class="mb-0" type="password" formControlName="password">
+                <p class="text-danger"
+                   *ngIf="loginForm.controls.password.errors?.required && loginForm.controls.password.touched">
+                  لطفا رمزعبور خود را وارد نمایید
+                </p>
+                <p class="text-danger"
+                   *ngIf="loginForm.controls.password.errors?.maxlength && loginForm.controls.password.touched">
+                  تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+                </p>
               </div>
+
               <div class="col-md-8">
                 <div class="check-box d-inline-block ml-0 ml-md-2 mt-10">
                   <input type="checkbox" id="remember_me">
@@ -45,39 +68,19 @@
           </div>
         </form>
       </div>
-      <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
-        <form action="#">
-          <div class="login-form">
-            <h4 class="login-title">ثبت نام</h4>
-            <div class="row">
-              <div class="col-md-6 col-12 mb-20">
-                <label>نام اصلی</label>
-                <input class="mb-0" type="text" placeholder="نام اصلی">
-              </div>
-              <div class="col-md-6 col-12 mb-20">
-                <label>نام خانوادگی</label>
-                <input class="mb-0" type="text" placeholder="نام خانوادگی">
-              </div>
-              <div class="col-md-12 mb-20">
-                <label>آدرس ایمیل*</label>
-                <input class="mb-0" type="email" placeholder="آدرس ایمیل">
-              </div>
-              <div class="col-md-6 mb-20">
-                <label>رمزعبور</label>
-                <input class="mb-0" type="password" placeholder="رمزعبور">
-              </div>
-              <div class="col-md-6 mb-20">
-                <label>تایید رمز عبور</label>
-                <input class="mb-0" type="password" placeholder="تایید رمز عبور">
-              </div>
-              <div class="col-12">
-                <button class="register-button mt-0">ثبت نام</button>
-              </div>
-            </div>
-          </div>
-        </form>
-      </div>
+
     </div>
   </div>
-</div>
-<!-- Login Content Area End Here -->
+  <!-- Login Content Area End Here -->
+
+
+  <!-- sweetAlert -->
+  <swal
+    #sweetAlert
+    title="اخطار"
+    text=""
+    icon="warning"
+    [showCancelButton]="false"
+  >
+  </swal>
+
