@@ -1,1 +1,131 @@
-<p>register works!</p>
+<!-- Begin Li's Breadcrumb Area -->
+<div class="breadcrumb-area">
+  <div class="container">
+    <div class="breadcrumb-content">
+      <ul>
+        <li><a href="index.html">خانه</a></li>
+        <li class="active">ثبت نام</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<!-- Li's Breadcrumb Area End Here -->
+
+<!-- Begin Login Content Area -->
+<div class="page-section mb-60">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-12 col-lg-8 col-xs-12 mt-40">
+        <form [formGroup]="registerForm" (ngSubmit)="submitRegisterForm()">
+          <div class="login-form">
+            <h4 class="login-title">ثبت نام</h4>
+            <div class="row">
+
+              <div class="col-md-6 col-12 mb-20">
+                <label>نام</label>
+                <input class="mb-0" type="text" formControlName="firstName">
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.firstName.errors?.required && registerForm.controls.firstName.touched">
+                  لطفا نام خود را وارد نمایید
+                </p>
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.firstName.errors?.maxlength && registerForm.controls.firstName.touched">
+                  تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+                </p>
+              </div>
+
+              <div class="col-md-6 col-12 mb-20">
+                <label>نام خانوادگی</label>
+                <input class="mb-0" type="text" formControlName="lastName">
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.lastName.errors?.required && registerForm.controls.lastName.touched">
+                  لطفا نام خانوادگی خود را وارد نمایید
+                </p>
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.lastName.errors?.maxlength && registerForm.controls.lastName.touched">
+                  تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+                </p>
+              </div>
+
+              <div class="col-md-12 mb-20">
+                <label>ایمیل</label>
+                <input class="mb-0" type="email" formControlName="email">
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.email.errors?.required && registerForm.controls.email.touched">
+                  لطفا ایمیل خود را وارد نمایید
+                </p>
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.email.errors?.maxlength && registerForm.controls.email.touched">
+                  تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+                </p>
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.email.errors?.email && registerForm.controls.email.touched">
+                  ایمیل وارد شده معتبر نمیباشد
+                </p>
+              </div>
+
+              <div class="col-md-12 mb-20">
+                <label>آدرس</label>
+                <input class="mb-0" type="text" formControlName="address">
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.address.errors?.required && registerForm.controls.address.touched">
+                  لطفا آدرس خود را وارد نمایید
+                </p>
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.address.errors?.maxlength && registerForm.controls.address.touched">
+                  تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+                </p>
+              </div>
+
+              <div class="col-md-6 mb-20">
+                <label>رمزعبور</label>
+                <input class="mb-0" type="password" formControlName="password">
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.password.errors?.required && registerForm.controls.password.touched">
+                  لطفا رمزعبور خود را وارد نمایید
+                </p>
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.password.errors?.maxlength && registerForm.controls.password.touched">
+                  تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+                </p>
+              </div>
+
+              <div class="col-md-6 mb-20">
+                <label>تایید رمز عبور</label>
+                <input class="mb-0" type="password" formControlName="confirmPassword">
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.confirmPassword.errors?.required && registerForm.controls.confirmPassword.touched">
+                  لطفا تایید رمز عبور را وارد نمایید
+                </p>
+                <p class="text-danger"
+                   *ngIf="registerForm.controls.confirmPassword.errors?.maxlength && registerForm.controls.confirmPassword.touched">
+                  تعداد کاراکترها نمیتواند بیشتر از 100 باشد
+                </p>
+              </div>
+
+              <div class="col-6">
+                <button class="register-button mt-0" type="submit">ثبت نام</button>
+              </div>
+
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Login Content Area End Here -->
+
+
+
+<!-- sweetAlert -->
+<swal
+  #sweetAlert
+  title="اخطار"
+  text="با این ایمیل قبلا ثبت نام شده است."
+  icon="warning"
+  [showCancelButton]="true"
+  [focusCancel]="true"
+>
+</swal>
+

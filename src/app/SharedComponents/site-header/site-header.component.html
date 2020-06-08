@@ -19,40 +19,18 @@
             <ul class="ht-menu">
               <!-- Begin Setting Area -->
               <li>
-                <div class="ht-setting-trigger"><span>تنظیمات</span></div>
+                <div class="ht-setting-trigger"><span>حساب کاربری</span></div>
                 <div class="setting ht-setting">
                   <ul class="ht-setting-list">
                     <li><a href="login-register.html">حساب من</a></li>
                     <li><a href="checkout.html">پرداخت</a></li>
-                    <li><a href="login-register.html">ورود</a></li>
+                    <li><a routerLink="/login">ورود</a></li>
+                    <li><a routerLink="/register">ثبت نام</a></li>
                   </ul>
                 </div>
               </li>
               <!-- Setting Area End Here -->
-              <!-- Begin Currency Area -->
-              <li>
-                <span class="currency-selector-wrapper">واحد پول :</span>
-                <div class="ht-currency-trigger"><span>دلار آمریکا</span></div>
-                <div class="currency ht-currency">
-                  <ul class="ht-setting-list">
-                    <li><a href="#">یورو</a></li>
-                    <li class="active"><a href="#">دلار آمریکا</a></li>
-                  </ul>
-                </div>
-              </li>
-              <!-- Currency Area End Here -->
-              <!-- Begin Language Area -->
-              <li>
-                <span class="language-selector-wrapper">زبان :</span>
-                <div class="ht-language-trigger"><span>انگلیسی</span></div>
-                <div class="language ht-language">
-                  <ul class="ht-setting-list">
-                    <li class="active"><a href="#"><img src="/assets/images/menu/flag-icon/1.jpg" alt="">انگلیسی</a></li>
-                    <li><a href="#"><img src="/assets/images/menu/flag-icon/2.jpg" alt="">فرانسوی</a></li>
-                  </ul>
-                </div>
-              </li>
-              <!-- Language Area End Here -->
+
             </ul>
           </div>
         </div>
@@ -231,15 +209,12 @@
           <div class="hb-menu">
             <nav>
               <ul>
-                <li class="dropdown-holder"><a href="index.html">خانه</a>
-                  <ul class="hb-dropdown">
-                    <li><a href="index.html">خانه یک</a></li>
-                    <li class="active"><a href="index-2.html">خانه دو</a></li>
-                    <li><a href="index-3.html">خانه سه</a></li>
-                    <li><a href="index-4.html">خانه چهار</a></li>
-                  </ul>
+                <li>
+                  <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">خانه</a>
                 </li>
-                <li class="megamenu-holder"><a href="shop-left-sidebar.html">فروشگاه</a>
+
+
+                <li class="megamenu-holder" routerLinkActive="active"><a href="shop-left-sidebar.html">فروشگاه</a>
                   <ul class="megamenu hb-megamenu">
                     <li><a href="shop-left-sidebar.html">طرح صفحه فروشگاه</a>
                       <ul>
@@ -273,7 +248,7 @@
                     </li>
                   </ul>
                 </li>
-                <li class="dropdown-holder"><a href="blog-left-sidebar.html">وبلاگ</a>
+                <li class="dropdown-holder" routerLinkActive="active"><a href="blog-left-sidebar.html">وبلاگ</a>
                   <ul class="hb-dropdown">
                     <li class="sub-dropdown-holder"><a href="blog-left-sidebar.html">نمایش وبلاگ گرید</a>
                       <ul class="hb-dropdown hb-sub-dropdown">
@@ -305,7 +280,7 @@
                     </li>
                   </ul>
                 </li>
-                <li class="megamenu-static-holder"><a href="index.html">صفحات</a>
+                <li class="megamenu-static-holder" routerLinkActive="active"><a href="index.html">صفحات</a>
                   <ul class="megamenu hb-megamenu">
                     <li><a href="blog-left-sidebar.html">طرح های وبلاگ</a>
                       <ul>
@@ -346,11 +321,18 @@
                     </li>
                   </ul>
                 </li>
-                <li><a href="about-us.html">درباره ما</a></li>
-                <li><a href="contact.html">تماس</a></li>
+
+                <li><a routerLink="/about-us" routerLinkActive="active">درباره ما</a></li>
+                <li><a routerLink="/contact-us" routerLinkActive="active">تماس با ما</a></li>
                 <!-- Begin Header Bottom Menu Information Area -->
+<!--                <li class="hb-info f-right p-0 d-sm-none d-lg-block">-->
+<!--                  <span>  شاهزاده, لندن, لندن بزرگ غرب 23, انگلیس</span>-->
+<!--                </li>-->
                 <li class="hb-info f-right p-0 d-sm-none d-lg-block">
-                  <span>  شاهزاده, لندن, لندن بزرگ غرب 23, انگلیس</span>
+                  <a routerLink="/register" routerLinkActive="active">ثبت نام</a>
+                </li>
+                <li class="hb-info f-right p-0 d-sm-none d-lg-block pl-10">
+                  <a routerLink="/login" routerLinkActive="active">ورود</a>
                 </li>
                 <!-- Header Bottom Menu Information Area End Here -->
               </ul>
