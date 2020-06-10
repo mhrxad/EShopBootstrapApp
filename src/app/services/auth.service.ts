@@ -5,6 +5,7 @@ import {BehaviorSubject, Observable} from "rxjs";
 import {LoginUserDTO} from "../DTOs/Account/LoginUserDTO";
 import {ILoginUserAccount} from "../DTOs/Account/ILoginUserAccount";
 import {CurrentUserDTO} from "../DTOs/Account/CurrentUserDTO";
+import {ICheckUserAuthResult} from "../DTOs/Account/ICheckUserAuthResult";
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +34,14 @@ export class AuthService {
 
   loginUser(loginUserDTO: LoginUserDTO): Observable<ILoginUserAccount> {
     return this.http.post<ILoginUserAccount>('/account/login', loginUserDTO);
+  }
+
+  checkUserAuth(): Observable<ICheckUserAuthResult> {
+    return this.http.post<ICheckUserAuthResult>('/account/check-auth', null);
+  }
+
+  logOutUser(): Observable<any> {
+    return this.http.get('/account/sign-out');
   }
 
 

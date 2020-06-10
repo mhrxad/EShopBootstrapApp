@@ -24,7 +24,7 @@
                   <ul class="ht-setting-list">
                     <li *ngIf="user != null"><a href="login-register.html">حساب من</a></li>
                     <li *ngIf="user != null"><a href="checkout.html">پرداخت</a></li>
-                    <li *ngIf="user != null"><a>خروج</a></li>
+                    <li *ngIf="user != null" (click)="logOutUser()"><a>خروج</a></li>
                     <li *ngIf="user == null"><a routerLink="/login">ورود</a></li>
                     <li *ngIf="user == null"><a routerLink="/register">ثبت نام</a></li>
                   </ul>
@@ -352,3 +352,14 @@
   <!-- Mobile Menu Area End Here -->
 </header>
 <!-- Header Area End Here -->
+
+
+<!-- sweetAlert -->
+<swal
+  #sweetAlert
+  title="موفق"
+  text="شما با موفقیت خارج شدید"
+  icon="success"
+  [showCancelButton]="false"
+>
+</swal>
