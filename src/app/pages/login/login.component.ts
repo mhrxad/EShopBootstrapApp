@@ -64,6 +64,10 @@ export class LoginComponent implements OnInit {
           this.cookieService.set('eshop-cookie', res.data.token, res.data.expireTime * 60);
           this.authService.setCurrentUser(currentUser);
           this.loginForm.reset();
+          this.sweetAlert.title = 'موفق';
+          this.sweetAlert.icon = 'success'
+          this.sweetAlert.text = 'خوش آمدید';
+          this.sweetAlert.fire();
           this.router.navigate(['/']);
         } else if (res.status === 'Error') {
           this.sweetAlert.text = res.data.message;

@@ -65,7 +65,6 @@ export class RegisterComponent implements OnInit {
 
 
   submitRegisterForm() {
-    console.log(this.registerForm.controls);
     const registerData = new RegisterUserDTO(
       this.registerForm.controls.email.value,
       this.registerForm.controls.firstName.value,
@@ -76,9 +75,12 @@ export class RegisterComponent implements OnInit {
     );
 
     this.authService.registerUser(registerData).subscribe(res => {
-      console.log(res);
       if (res.status === 'Success') {
         this.registerForm.reset();
+        this.sweetAlert.title = 'موفق';
+        this.sweetAlert.icon = 'success'
+        this.sweetAlert.text = 'ثبت نام شما با موفقیت انجام شد لینک فعال سازی حساب کاربری به ایمیل شما ارسال گردید';
+        this.sweetAlert.fire();
       }
       if (res.status === 'Error') {
         if (res.data.info === 'EmailExist') {

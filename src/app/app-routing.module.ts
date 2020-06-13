@@ -9,6 +9,7 @@ import {BannerComponent} from "./pages/home/banner/banner.component";
 import {SliderComponent} from "./pages/home/slider/slider.component";
 import {SiteHeaderComponent} from "./SharedComponents/site-header/site-header.component";
 import {SiteFooterComponent} from "./SharedComponents/site-footer/site-footer.component";
+import {ActiveAccountComponent} from "./SharedComponents/active-account/active-account.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -16,6 +17,7 @@ const routes: Routes = [
   {path: 'about-us', component: AboutUsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'activate-account/:activeCode', component: ActiveAccountComponent},
 ];
 
 @NgModule({
@@ -34,7 +36,7 @@ export const routingComponents = [
   AboutUsComponent,
   LoginComponent,
   RegisterComponent,
-
+  ActiveAccountComponent
 
 
 ];
