@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FilterProductsDTO} from "../../DTOs/Products/FilterProductsDTO";
 import {ProductsService} from "../../services/products.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {ProductCategory} from "../../DTOs/Products/ProductCategory";
 
 @Component({
   selector: 'app-products',
@@ -11,10 +12,11 @@ import {ActivatedRoute, Router} from "@angular/router";
 export class ProductsComponent implements OnInit {
 
   filterProducts: FilterProductsDTO = new FilterProductsDTO(
-    '', 0, 0, 1, 0, 0, 0, 6, 0, 1, []
+    '', 0, 0, 1, 0, 0, 0, 6, 0, 1, [], []
   );
   isLoading = true;
   pages: number[] = [];
+  categories: ProductCategory[] = [];
 
   constructor(
     private productsService: ProductsService,
@@ -25,23 +27,49 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.queryParams.subscribe(params => {
-      console.log(params);
       let pageId = 1;
       if (params.pageId !== undefined) {
         pageId = parseInt(params.pageId, 0);
       }
-
+      this.filterProducts.categories = params.categories ? params.categories : [];
+      console.log(this.filterProducts.categories);
       this.filterProducts.pageId = pageId;
       this.getProducts();
     });
+
+    this.productsService.getProductActiveCategories().subscribe(res => {
+      if (res.status === 'Success') {
+        this.categories = res.data;
+        console.log(this.categories);
+      }
+    });
+
+  }
+
+  filterCategories(event: any) {
+    const value = event.target.value;
+    if (this.filterProducts.categories === undefined || this.filterProducts.categories === null) {
+      this.filterProducts.categories = [];
+    }
+    if (event.target.checked) {
+      this.filterProducts.categories.push(parseInt(value, 0));
+      this.setCategoriesFilter();
+    } else {
+      this.filterProducts.categories = this.filterProducts.categories.filter(s => s !== parseInt(value, 0));
+      this.setCategoriesFilter();
+    }
+  }
+
+  setCategoriesFilter() {
+    if (this.filterProducts.categories.length > 0) {
+      this.router.navigate(['products'], {queryParams: {categories: this.filterProducts.categories}});
+    } else {
+      this.router.navigate(['products']);
+    }
   }
 
   setPage(page: number) {
-    this.router.navigate(['products'], {queryParams: {pageId: page}});
-  }
-
-  nextpage(){
-      this.router.navigate(['products'], {queryParams: {pageId: this.filterProducts.pageId+1}});
+    this.router.navigate(['products'], {queryParams: {pageId: page, categories: this.filterProducts.categories}});
   }
 
   getProducts() {
@@ -52,6 +80,10 @@ export class ProductsComponent implements OnInit {
       }
       this.isLoading = false;
       this.pages = [];
+      if (res.data.categories === null) {
+        this.filterProducts.categories = [];
+      }
+
       for (let i = this.filterProducts.startPage; i <= this.filterProducts.endPage; i++) {
         this.pages.push(i);
       }

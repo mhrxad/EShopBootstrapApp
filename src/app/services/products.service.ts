@@ -3,6 +3,7 @@ import {HttpClient, HttpParams} from "@angular/common/http";
 import {IResponseResult} from "../DTOs/Common/IResponseResult";
 import {FilterProductsDTO} from "../DTOs/Products/FilterProductsDTO";
 import {Observable} from "rxjs";
+import {ProductCategory} from "../DTOs/Products/ProductCategory";
 
 @Injectable({
   providedIn: 'root'
@@ -23,9 +24,17 @@ export class ProductsService {
         .set('startPrice', filter.startPrice.toString())
         .set('endPrice', filter.endPrice.toString())
         .set('takeEntity', filter.takeEntity.toString());
+      for (const category of filter.categories) {
+        params = params.append('categories', category.toString());
+      }
     }
 
     return this.http.get<IResponseResult<FilterProductsDTO>>('/products/filter-products', {params});
   }
+
+  getProductActiveCategories(): Observable<IResponseResult<ProductCategory[]>> {
+    return this.http.get<IResponseResult<ProductCategory[]>>('/products/product-active-categories');
+  }
+
 
 }

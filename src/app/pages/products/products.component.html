@@ -127,7 +127,9 @@
             <div class="paginatoin-area">
               <div class="row">
                 <div class="col-lg-6 col-md-6">
-                  <p>نمایش {{filterProducts.pageId * filterProducts.takeEntity - filterProducts.takeEntity + 1}}-{{filterProducts.pageId * filterProducts.takeEntity}} از {{filterProducts.pageCount * filterProducts.takeEntity}} مورد (ها)</p>
+                  <p>نمایش {{filterProducts.pageId * filterProducts.takeEntity - filterProducts.takeEntity + 1}}
+                    -{{filterProducts.pageId * filterProducts.takeEntity}}
+                    از {{filterProducts.pageCount * filterProducts.takeEntity}} مورد (ها)</p>
                 </div>
                 <div class="col-lg-6 col-md-6">
                   <ul class="pagination-box">
@@ -142,7 +144,7 @@
                     </li>
 
                     <li>
-                      <a href="#" class="Next" (click)="nextpage()"> بعدی <i class="fa fa-chevron-right"></i></a>
+                      <a href="#" class="Next"> بعدی <i class="fa fa-chevron-right"></i></a>
                     </li>
                   </ul>
                 </div>
@@ -154,125 +156,26 @@
       </div>
       <div class="col-lg-3 order-2 order-lg-1">
         <!--sidebar-categores-box start  -->
-        <div class="sidebar-categores-box mt-sm-30 mt-xs-30">
-          <div class="sidebar-title">
-            <h2>لپ تاپ</h2>
-          </div>
-          <!-- category-sub-menu start -->
-          <div class="category-sub-menu">
-            <ul>
-              <li class="has-sub"><a href="# ">ویدئوی اصلی</a>
-                <ul>
-                  <li><a href="#">همه ویدئوها</a></li>
-                  <li><a href="#">بلوز</a></li>
-                  <li><a href="#">لباس شب</a></li>
-                  <li><a href="#">لباس تابستانی</a></li>
-                  <li><a href="#">اجاره یا خرید</a></li>
-                  <li><a href="#">فهرست پیگیری شما</a></li>
-                  <li><a href="#">تماشای هرجایی</a></li>
-                  <li><a href="#">شروع شدن</a></li>
-                </ul>
-              </li>
-              <li class="has-sub"><a href="#">کامپیوتر</a>
-                <ul>
-                  <li><a href="#">تلویزیون و ویدئو</a></li>
-                  <li><a href="#">صوتی و تئاتر</a></li>
-                  <li><a href="#">دوربین، عکس</a></li>
-                  <li><a href="#">تلفن های همراه</a></li>
-                  <li><a href="#">هدفون</a></li>
-                  <li><a href="#">بازی های ویدئویی</a></li>
-                  <li><a href="#">بلندگوهای بی سیم</a></li>
-                </ul>
-              </li>
-              <li class="has-sub"><a href="#">الکترونیک</a>
-                <ul>
-                  <li><a href="#">صفحه اصلی آمازون</a></li>
-                  <li><a href="#">آشپزخانه و ناهارخوری</a></li>
-                  <li><a href="#">تختخواب و حمام</a></li>
-                  <li><a href="#">لوازم خانگی</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <!-- category-sub-menu end -->
-        </div>
-        <!--sidebar-categores-box end  -->
-        <!--sidebar-categores-box start  -->
         <div class="sidebar-categores-box">
           <div class="sidebar-title">
             <h2>فیلتر بر اساس</h2>
           </div>
           <!-- btn-clear-all start -->
-          <button class="btn-clear-all mb-sm-30 mb-xs-30">پاک کردن همه</button>
+          <button class="btn-clear-all mb-sm-30 mb-xs-30" routerLink="/products">پاک کردن همه</button>
           <!-- btn-clear-all end -->
+
           <!-- filter-sub-area start -->
-          <div class="filter-sub-area">
-            <h5 class="filter-sub-titel">برند</h5>
-            <div class="categori-checkbox">
-              <form action="#">
-                <ul>
-                  <li><input type="checkbox" name="product-categori"><a href="#">ویدئوی اصلی (13)</a></li>
-                  <li><input type="checkbox" name="product-categori"><a href="#">کامپیوتر (12)</a></li>
-                  <li><input type="checkbox" name="product-categori"><a href="#">الکترونیک (11)</a></li>
-                </ul>
-              </form>
-            </div>
-          </div>
-          <!-- filter-sub-area end -->
-          <!-- filter-sub-area start -->
-          <div class="filter-sub-area pt-sm-10 pt-xs-10">
+          <div class="filter-sub-area pt-sm-10 pt-xs-10" *ngIf="categories.length > 0">
             <h5 class="filter-sub-titel">دسته ها</h5>
             <div class="categori-checkbox">
-              <form action="#">
-                <ul>
-                  <li><input type="checkbox" name="product-categori"><a href="#">گوشه گرافیک (10)</a></li>
-                  <li><input type="checkbox" name="product-categori"><a href="#"> استودیو طراحی (6)</a></li>
-                </ul>
-              </form>
-            </div>
-          </div>
-          <!-- filter-sub-area end -->
-          <!-- filter-sub-area start -->
-          <div class="filter-sub-area pt-sm-10 pt-xs-10">
-            <h5 class="filter-sub-titel">اندازه</h5>
-            <div class="size-checkbox">
-              <form action="#">
-                <ul>
-                  <li><input type="checkbox" name="product-size"><a href="#">S (3)</a></li>
-                  <li><input type="checkbox" name="product-size"><a href="#">M (3)</a></li>
-                  <li><input type="checkbox" name="product-size"><a href="#">L (3)</a></li>
-                  <li><input type="checkbox" name="product-size"><a href="#">XL (3)</a></li>
-                </ul>
-              </form>
-            </div>
-          </div>
-          <!-- filter-sub-area end -->
-          <!-- filter-sub-area start -->
-          <div class="filter-sub-area pt-sm-10 pt-xs-10">
-            <h5 class="filter-sub-titel">رنگ</h5>
-            <div class="color-categoriy">
-              <form action="#">
-                <ul>
-                  <li><span class="white"></span><a href="#">سفید (1)</a></li>
-                  <li><span class="black"></span><a href="#">سیاه (1)</a></li>
-                  <li><span class="Orange"></span><a href="#">نارنجی (3) </a></li>
-                  <li><span class="Blue"></span><a href="#">آبی (2) </a></li>
-                </ul>
-              </form>
-            </div>
-          </div>
-          <!-- filter-sub-area end -->
-          <!-- filter-sub-area start -->
-          <div class="filter-sub-area pt-sm-10 pb-sm-15 pb-xs-15">
-            <h5 class="filter-sub-titel">ابعاد</h5>
-            <div class="categori-checkbox">
-              <form action="#">
-                <ul>
-                  <li><input type="checkbox" name="product-categori"><a href="#">40x60cm (6)</a></li>
-                  <li><input type="checkbox" name="product-categori"><a href="#">60x90cm (6)</a></li>
-                  <li><input type="checkbox" name="product-categori"><a href="#">80x120cm (6)</a></li>
-                </ul>
-              </form>
+              <ul>
+                <li *ngFor="let cat of categories">
+                    <input type="checkbox" [value]="cat.id" [id]="'cat_' + cat.id"
+                           (change)="filterCategories($event)"
+                           [checked]="filterProducts.categories?.indexOf(cat.id) >= 0">
+                    {{cat.title}}
+                </li>
+              </ul>
             </div>
           </div>
           <!-- filter-sub-area end -->
