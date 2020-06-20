@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   @ViewChild('sweetAlert') private sweetAlert: SwalComponent;
   public registerForm: FormGroup;
-
+  isLoading = false;
 
   constructor(
     private authService: AuthService
@@ -65,6 +65,7 @@ export class RegisterComponent implements OnInit {
 
 
   submitRegisterForm() {
+    this.isLoading = true;
     const registerData = new RegisterUserDTO(
       this.registerForm.controls.email.value,
       this.registerForm.controls.firstName.value,
@@ -77,6 +78,7 @@ export class RegisterComponent implements OnInit {
     this.authService.registerUser(registerData).subscribe(res => {
       if (res.status === 'Success') {
         this.registerForm.reset();
+        this.isLoading = false;
         this.sweetAlert.title = 'موفق';
         this.sweetAlert.icon = 'success'
         this.sweetAlert.text = 'ثبت نام شما با موفقیت انجام شد لینک فعال سازی حساب کاربری به ایمیل شما ارسال گردید';

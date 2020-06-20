@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
 
   @ViewChild('sweetAlert') private sweetAlert: SwalComponent;
   public loginForm: FormGroup;
-
+  isLoading = false;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -45,8 +45,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitLoginForm() {
-    console.log(this.loginForm)
-
+    this.isLoading = true;
     if (this.loginForm.valid) {
       const loginData = new LoginUserDTO(
         this.loginForm.controls.email.value,
@@ -64,6 +63,7 @@ export class LoginComponent implements OnInit {
           this.cookieService.set('eshop-cookie', res.data.token, res.data.expireTime * 60);
           this.authService.setCurrentUser(currentUser);
           this.loginForm.reset();
+          this.isLoading = false;
           this.sweetAlert.title = 'موفق';
           this.sweetAlert.icon = 'success'
           this.sweetAlert.text = 'خوش آمدید';

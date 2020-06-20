@@ -14,6 +14,8 @@ export class SliderComponent implements OnInit {
 
   public sliders: Slider[] = [];
   public domain: string = DomainName;
+  isLoading = true;
+
   constructor(
     private sliderService: SliderService
   ) { }
@@ -34,6 +36,7 @@ export class SliderComponent implements OnInit {
           sliderActivision();
         }, 100);
       }
+      this.isLoading = false;
     });
   }
 

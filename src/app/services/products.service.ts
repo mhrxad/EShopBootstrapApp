@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {IResponseResult} from "../DTOs/Common/IResponseResult";
 import {FilterProductsDTO} from "../DTOs/Products/FilterProductsDTO";
 import {Observable} from "rxjs";
@@ -14,8 +14,18 @@ export class ProductsService {
   ) {
   }
 
-  getFilteredProducts(): Observable<IResponseResult<FilterProductsDTO>> {
-    return this.http.get<IResponseResult<FilterProductsDTO>>('/products/filter-products');
+  getFilteredProducts(filter: FilterProductsDTO): Observable<IResponseResult<FilterProductsDTO>> {
+    let params;
+    if (filter !== null) {
+      params = new HttpParams()
+        .set('pageId', filter.pageId.toString())
+        .set('title', filter.title)
+        .set('startPrice', filter.startPrice.toString())
+        .set('endPrice', filter.endPrice.toString())
+        .set('takeEntity', filter.takeEntity.toString());
+    }
+
+    return this.http.get<IResponseResult<FilterProductsDTO>>('/products/filter-products', {params});
   }
 
 }
