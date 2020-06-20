@@ -39,14 +39,12 @@
           <div class="product-select-box">
             <div class="product-short">
               <p>مرتب سازی بر اساس:</p>
-              <select class="nice-select">
-                <option value="trending">ارتباط</option>
-                <option value="sales">نام (الف - ی)</option>
-                <option value="sales">نام (ی - الف)</option>
-                <option value="rating">قیمت (پایین &gt; بالا)</option>
-                <option value="date">رتبه (کمترین)</option>
-                <option value="price-asc">مدل (الف - ی)</option>
-                <option value="price-asc">مدل (ی - الف)</option>
+              <select  [(ngModel)]="filterProducts.orderBy" id="orderBy"
+                      (change)="changeOrder($event)">
+                <optgroup label="قیمت">
+                  <option value='0'>بر اساس قیمت (کم به زیاد) &uarr;</option>
+                  <option value='1'>بر اساس قیمت (زیاد به کم) &darr;</option>
+                </optgroup>
               </select>
             </div>
           </div>
@@ -170,10 +168,10 @@
             <div class="categori-checkbox">
               <ul>
                 <li *ngFor="let cat of categories">
-                    <input type="checkbox" [value]="cat.id" [id]="'cat_' + cat.id"
-                           (change)="filterCategories($event)"
-                           [checked]="filterProducts.categories?.indexOf(cat.id) >= 0">
-                    {{cat.title}}
+                  <input type="checkbox" [value]="cat.id" [id]="'cat_' + cat.id"
+                         (change)="filterCategories($event)"
+                         [checked]="filterProducts.categories?.indexOf(cat.id) >= 0">
+                  {{cat.title}}
                 </li>
               </ul>
             </div>

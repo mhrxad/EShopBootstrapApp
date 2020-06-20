@@ -27,6 +27,9 @@ export class ProductsService {
       for (const category of filter.categories) {
         params = params.append('categories', category.toString());
       }
+      if (filter.orderBy != null) {
+        params = params.append('orderBy', filter.orderBy.toString());
+      }
     }
 
     return this.http.get<IResponseResult<FilterProductsDTO>>('/products/filter-products', {params});

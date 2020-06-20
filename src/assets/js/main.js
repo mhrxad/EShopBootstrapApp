@@ -769,3 +769,7 @@ function counter() {
     time: 1000
   });
 }
+
+function niceSelected() {
+    $('.nice-select').niceSelect();
+}
